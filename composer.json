@@ -1,5 +1,5 @@
 {
-    "name": "emil/php-chart",
+    "name": "innit/charthelper",
     "description": "A PHP / d3.js chart helper",
     "license": "MIT",
     "authors": [
