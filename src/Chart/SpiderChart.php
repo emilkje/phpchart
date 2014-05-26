@@ -19,7 +19,9 @@ class SpiderChart extends Chart {
 			->option('opacityArea', '.5')
 			->option('color', 'd3.scale.category10()')
 			->option('padding-x', '200')
-			->option('padding-y', '200');
+			->option('padding-y', '200')
+			->option('translate-x', '80')
+			->option('translate-y', '30');
 	}
 
 	public function draw() {
@@ -50,7 +52,9 @@ class SpiderChart extends Chart {
 			maxValue: '.$this->option('maxValue').',
 			opacityArea: '.$this->option('opacityArea').',
 			ExtraWidthX: '.$this->option('padding-x').',
-			ExtraWidthY: '.$this->option('padding-y').'
+			ExtraWidthY: '.$this->option('padding-y').',
+			TranslateX: '.$this->option('translate-x').',
+			TranslateY: '.$this->option('translate-y').'
 		};
 		SpiderChart.draw("#' . $this->uuid() . '", d, cfg);
 		</script>';
