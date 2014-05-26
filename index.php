@@ -15,24 +15,17 @@ use Innit\Chart\SpiderChart;
 
 <?php
 $chart = new SpiderChart();
+$layer = $chart->createLayer();
+$layer
+	->addItem(20, 'First', 'Description 1')
+	->addItem(45, 'Second', 'Description 2')
+	->addItem(30, 'Third', 'Description 3')
+	->addItem(66, 'Fourth', 'Description 4')
+	->addItem(90, 'Fifth', 'Description 5');
 
-for($i = 0; $i < 3; $i++) {
-	$layer = $chart->createLayer();
-	for($j = 0; $j < 7; $j++) {
-		$layer->addItem('Random ' . $j, ceil(rand(0,100)));
-	}
-	$chart->addLayer($layer);
-}
+$chart->addLayer($layer);
+$chart->draw();
 
-$chart->option('h', '600')
-	  ->option('w', '600')
-	  ->option('factor', '.95')
-	  ->option('factorLegend', '1')
-	  ->option('levels', '3')
-	  ->option('maxValue', '0')
-	  ->option('opacityArea', '.5')
-	  ->option('color', 'd3.scale.category10()')
-	  ->draw();
 ?>
 </body>
 </html>
