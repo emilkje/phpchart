@@ -1,0 +1,20 @@
+{
+    "name": "emil/php-chart",
+    "description": "A PHP / d3.js chart helper",
+    "license": "MIT",
+    "authors": [
+    {
+        "name": "Emil Kjelsrud",
+        "email": "emil@innit.no"
+    }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "rhumsaa/uuid": "*"
+    },
+    "autoload": {
+      "psr-4": {
+          "Innit\\Chart\\": "src/Chart"
+      }
+    }
+  }
