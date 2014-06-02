@@ -6,6 +6,7 @@ use Innit\Chart\SpiderChart;
 <html>
 <head>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript" src="lib/SpiderChart.js"></script>
 <title>SpiderChart</title>

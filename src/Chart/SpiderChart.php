@@ -26,8 +26,6 @@ class SpiderChart extends Chart {
 
 	public function draw() {
 
-		#echo '<pre>'; die(var_dump($this->layers()));
-
 		$formattedItems = array_map(function($layer) {
 
 			return array_map(function($item){
@@ -41,6 +39,7 @@ class SpiderChart extends Chart {
 
 		echo '<div id="' . $this->uuid() . '"></div>';
 		echo '<script>';
+		echo '$(function(){';
 		echo 'var d = ' . json_encode($formattedItems) . ';';
 		echo 'var cfg = {
 			h: '.$this->option('h').',
@@ -56,7 +55,8 @@ class SpiderChart extends Chart {
 			TranslateX: '.$this->option('translate-x').',
 			TranslateY: '.$this->option('translate-y').'
 		};
-		SpiderChart.draw("#' . $this->uuid() . '", d, cfg);
-		</script>';
+		SpiderChart.draw("#' . $this->uuid() . '", d, cfg);';
+		echo '});';
+		echo '</script>';
 	}
 };
