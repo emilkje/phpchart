@@ -8,8 +8,9 @@ use Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException;
 class Chart implements Support\ChartInterface {
 
 	private $layers = array();
-	private $id = null;
+	public $id = null;
 	private $options = array();
+	private $classes = array();
 
 	public function __construct() {
 
@@ -20,17 +21,21 @@ class Chart implements Support\ChartInterface {
 	}
 
 	public function draw() {
+		$this->id = $this->uuid();
 
+		echo '<div id="'.$this->id.'" class="chart '.join('', array_slice(explode('\\', get_class($this)), -1)).' '.implode(' ', $this->classes).'"';
+		foreach($this->options() as $key => $val) {
+			echo ' data-'.$key.'="'.$val.'"';
+		}
+		echo '></div>';
 	}
 
-	public function uuid() {
-		if($this->id)
-			return $this->id;
+	private function uuid() {
 
 		try {
 
-			// Generate a version 5 (name-based and hashed with SHA1) UUID
-			$this->id = Uuid::uuid5(Uuid::NAMESPACE_DNS, 'php.net');
+			// Generate a version 4 (random-based) UUID
+			$id = Uuid::uuid4();
 
 		} catch (UnsatisfiedDependencyException $e) {
 
@@ -42,10 +47,10 @@ class Chart implements Support\ChartInterface {
 			for ($i = 0; $i < $length; $i++) {
 				$randomString .= $characters[rand(0, strlen($characters) - 1)];
 			}
-			$this->id = $randomString;
+			$id = $randomString;
 		}
 
-		return $this->id;
+		return 'chart_'.$id;
 	}
 
 	public function addLayer(Support\LayerInterface $layer) {
@@ -58,12 +63,17 @@ class Chart implements Support\ChartInterface {
 	}
 
 	public function option($key, $value = null) {
-		if($value == null) return $this->option[$key];
+		if($value === null) return $this->option[$key];
 		$this->option[$key] = $value;
 		return $this;
 	}
 
 	public function options() {
 		return $this->option;
+	}
+
+	public function addClass($class) {
+		array_push($this->classes, $class);
+		return $this;
 	}
 }
