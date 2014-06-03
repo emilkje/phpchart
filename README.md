@@ -3,7 +3,7 @@ PHPChart is a php helper for generating charts with d3.js
 
 ##Dependencies
 
-* jQuery.js
+* jQuery
 * d3.js
 * all the files in `lib/` directory
 

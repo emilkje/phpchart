@@ -13,7 +13,17 @@ use Innit\Chart\SpeedometerChart;
 <script type="text/javascript" src="lib/SpeedometerChart.js"></script>
 <title>SpiderChart</title>
 
-<style>.chart{float: left;}</style>
+<style>
+body{background: #f0f0f0;}
+.chart{float: left;}
+.chart.SpeedometerChart {
+	background: rgba(255,255,255,.9);
+	margin: 0 10px;
+	border-radius: 4px;
+	box-shadow: 0 0 20px -10px rgba(0,0,0,.8);
+	padding-bottom:5px
+}
+</style>
 </head>
 <body>
 
@@ -31,27 +41,35 @@ $layer
 $chart->addLayer($layer);
 $chart->option('factor', '1');
 $chart->draw();
+
+$chart2 = new SpeedometerChart();
+$chart2
+	->max(100)
+	->value(1)
+	->addClass('cutomclass')
+	->option('background', '#f0f0f0');
+
+$chart3 = clone($chart2);
+$chart3->value(25);
+
+$chart4 = clone($chart2);
+$chart4->value(50)->option('animate', false);
+
+$chart5 = clone($chart2);
+$chart5->value(75)->option('background', "#f0f0f0");
+
+$chart6 = clone($chart2);
+$chart6->value(100);
 ?>
 
 <div style="clear:both; margin: 30px 0">
-<?php
-$chart2 = new SpeedometerChart();
-$chart2->max(100);
-$chart2->value(1);
-$chart2->draw();
-
-$chart2->value(25);
-$chart2->draw();
-
-$chart2->value(50);
-$chart2->draw();
-
-$chart2->value(75);
-$chart2->draw();
-
-$chart2->value(100);
-$chart2->draw();
-?>
+	<?php
+		$chart2->draw();
+		$chart3->draw();
+		$chart4->draw();
+		$chart5->draw();
+		$chart6->draw();
+	?>
 </div>
 </body>
 </html>
