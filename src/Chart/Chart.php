@@ -11,26 +11,32 @@ class Chart implements Support\ChartInterface {
 	public $id = null;
 	private $options = array();
 	private $classes = array();
+	public $default_options = array();
 
 	public function __construct() {
-
+		$this->options($this->default_options);
 	}
 
 	public function createLayer() {
 		return new Support\Layer;
 	}
 
-	public function draw() {
+	public function generate() {
 		$this->id = $this->uuid();
-
-		echo '<div id="'.$this->id.'" class="chart '.join('', array_slice(explode('\\', get_class($this)), -1)).' '.implode(' ', $this->classes).'"';
+		$str = '';
+		$str .= '<div id="'.$this->id.'" class="chart '.join('', array_slice(explode('\\', get_class($this)), -1)).' '.implode(' ', $this->classes).'"';
 		foreach($this->options() as $key => $val) {
-			echo ' data-'.$key.'="'.$val.'"';
+			$str .= ' data-'.$key.'="'.$val.'"';
 		}
-		echo '></div>';
+		$str .= '></div>';
+		return $str;
 	}
 
-	private function uuid() {
+	public function draw() {
+		echo $this->generate();
+	}
+
+	protected function uuid() {
 
 		try {
 
@@ -63,17 +69,25 @@ class Chart implements Support\ChartInterface {
 	}
 
 	public function option($key, $value = null) {
-		if($value === null) return $this->option[$key];
-		$this->option[$key] = $value;
+		if($value === null) return $this->options[$key];
+		$this->options[$key] = $value;
 		return $this;
 	}
 
-	public function options() {
-		return $this->option;
+	public function options($options = null) {
+		if($options === null)
+			return $this->options;
+
+		$this->options = $options;
+		return $this;
 	}
 
 	public function addClass($class) {
 		array_push($this->classes, $class);
 		return $this;
+	}
+
+	public function classes() {
+		return $this->classes;
 	}
 }

@@ -12,9 +12,13 @@
     "require": {
         "rhumsaa/uuid": "*"
     },
+    "require-dev": {
+        "phpspec/phpspec": "2.*"
+    },
     "autoload": {
-      "psr-4": {
-          "Innit\\Chart\\": "src/Chart"
-      }
+      "psr-4": { "Innit\\Chart\\": "src/Chart" }
+    },
+    "autoload-dev": {
+      "psr-4": { "Innit\\Chart\\Tests\\": "tests/" }
     }
-  }
+}

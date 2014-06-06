@@ -4,28 +4,28 @@ namespace Innit\Chart;
 
 class SpiderChart extends Chart {
 
-	public function __construct() {
-		$this->defaults();
-	}
+	public $default_options = array(
+		'h' => '600',
+		'w' => '600',
+		'factor' => '1',
+		'factorLegend' => '.95',
+		'levels' => '10',
+		'maxValue' => '1',
+		'opacityArea' => '.5',
+		'color' => 'd3.scale.category10()',
+		'padding-x' => '200',
+		'padding-y' => '200',
+		'translate-x' => '80',
+		'translate-y' => '30'
+	);
 
-	private function defaults() {
-		$this
-			->option('h', '600')
-			->option('w', '600')
-			->option('factor', '1')
-			->option('factorLegend', '.95')
-			->option('levels', '10')
-			->option('maxValue', '1')
-			->option('opacityArea', '.5')
-			->option('color', 'd3.scale.category10()')
-			->option('padding-x', '200')
-			->option('padding-y', '200')
-			->option('translate-x', '80')
-			->option('translate-y', '30');
-	}
 
 	public function draw() {
 		parent::draw();
+		echo $this->generateJS();
+	}
+
+	public function generateJS() {
 
 		$formattedItems = array_map(function($layer) {
 
@@ -38,10 +38,11 @@ class SpiderChart extends Chart {
 
 		}, $this->layers());
 
-		echo '<script>';
-		echo '$(function(){';
-		echo 'var d = ' . json_encode($formattedItems) . ';';
-		echo 'var cfg = {
+		$str = '';
+		$str .= '<script>';
+		$str .= '$(function(){';
+		$str .= 'var d = ' . json_encode($formattedItems) . ';';
+		$str .= 'var cfg = {
 			h: '.$this->option('h').',
 			w: '.$this->option('w').',
 			color: '.$this->option('color').',
@@ -56,7 +57,9 @@ class SpiderChart extends Chart {
 			TranslateY: '.$this->option('translate-y').'
 		};
 		SpiderChart.draw("#' . $this->id . '", d, cfg);';
-		echo '});';
-		echo '</script>';
+		$str .= '});';
+		$str .= '</script>';
+
+		return $str;
 	}
 };

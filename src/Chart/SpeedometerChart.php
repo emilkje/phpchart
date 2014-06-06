@@ -38,9 +38,4 @@ class SpeedometerChart extends Chart {
     return $this;
   }
 
-  public function draw() {
-
-    parent::draw();
-
-  }
 };

@@ -1,0 +1,4 @@
+formatter.name: pretty
+suites:
+  chart_suite: 
+    namespace: Innit\Chart
