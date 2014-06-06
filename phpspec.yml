@@ -2,3 +2,4 @@ formatter.name: pretty
 suites:
   chart_suite: 
     namespace: Innit\Chart
+    spec_path: tests

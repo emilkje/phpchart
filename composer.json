@@ -19,6 +19,6 @@
       "psr-4": { "Innit\\Chart\\": "src/Chart" }
     },
     "autoload-dev": {
-      "psr-4": { "Innit\\Chart\\Tests\\": "tests/" }
+      "psr-4": { "Innit\\Chart\\Tests\\": "spec/" }
     }
 }
