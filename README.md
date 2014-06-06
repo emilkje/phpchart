@@ -62,3 +62,6 @@ PHPChart is a php helper for generating charts with d3.js
         ->option('background', '#f0f0f0') // background bar-color
         ->draw();
     ?>
+
+##Test
+Run all tests with command `make test`. Only Behaviour tests is implemented at this stage
