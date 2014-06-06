@@ -32,13 +32,22 @@ body{background: #f0f0f0;}
 $chart = new SpiderChart();
 $layer = $chart->createLayer();
 $layer
-	->addItem(20, 'First', 'Description 1')
-	->addItem(45, 'Second', 'Description 2')
-	->addItem(30, 'Third', 'Description 3')
-	->addItem(66, 'Fourth', 'Description 4')
-	->addItem(90, 'Fifth', 'Description 5');
+	->addItem(20, 'Produksjon', 'Description 1')
+	->addItem(45, 'Terminologi', 'Description 2')
+	->addItem(30, 'HMS', 'Description 3')
+	->addItem(66, 'BLABLBA', 'Description 4')
+	->addItem(90, 'Et eller anna', 'Description 5');
+
+$layer2 = $chart->createLayer();
+$layer2
+	->addItem(11)
+	->addItem(78)
+	->addItem(71)
+	->addItem(3)
+	->addItem(26);
 
 $chart->addLayer($layer);
+$chart->addLayer($layer2);
 $chart->option('factor', '1');
 $chart->draw();
 
