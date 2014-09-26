@@ -16,7 +16,8 @@ class SpiderChart extends Chart {
 		'padding-x' => '200',
 		'padding-y' => '200',
 		'translate-x' => '80',
-		'translate-y' => '30'
+		'translate-y' => '30',
+		'legend' => 'false'
 	);
 
 
@@ -54,7 +55,8 @@ class SpiderChart extends Chart {
 			ExtraWidthX: '.$this->option('padding-x').',
 			ExtraWidthY: '.$this->option('padding-y').',
 			TranslateX: '.$this->option('translate-x').',
-			TranslateY: '.$this->option('translate-y').'
+			TranslateY: '.$this->option('translate-y').',
+			legend: '.$this->option('legend').',
 		};
 		SpiderChart.draw("#' . $this->id . '", d, cfg);';
 		$str .= '});';
