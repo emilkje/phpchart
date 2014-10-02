@@ -19,7 +19,8 @@ class SpeedometerChart extends Chart {
       ->option('animate', 'true')
       ->option('duration', '1000')
       ->option('ease', 'cubic-in-out')
-      ->option('background', 'transparent');
+      ->option('background', 'transparent')
+			->option('color','');
   }
 
   public function value($val = NULL) {
