@@ -1,0 +1,3 @@
+[remote "test"]
+	url = git@test7.innit.no:charthelper.git
+	fetch = +refs/heads/*:refs/remotes/test/*
