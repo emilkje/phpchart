@@ -10,7 +10,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "rhumsaa/uuid": "*"
+        "rhumsaa/uuid": "~2.7"
     },
     "require-dev": {
         "phpspec/phpspec": "2.*"
