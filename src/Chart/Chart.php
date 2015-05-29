@@ -17,8 +17,8 @@ class Chart implements Support\ChartInterface {
 		$this->options($this->default_options);
 	}
 
-	public function createLayer() {
-		return new Support\Layer;
+	public function createLayer($id = null) {
+		return new Support\Layer($id);
 	}
 
 	public function generate() {
@@ -36,7 +36,7 @@ class Chart implements Support\ChartInterface {
 		echo $this->generate();
 	}
 
-	protected function uuid() {
+	private function uuid() {
 
 		try {
 
@@ -60,12 +60,16 @@ class Chart implements Support\ChartInterface {
 	}
 
 	public function addLayer(Support\LayerInterface $layer) {
-		array_push($this->layers, $layer);
+		$this->layers[$layer->id()] = $layer;
 		return $this;
 	}
 
 	public function layers() {
 		return $this->layers;
+	}
+
+	public function getLayer($id) {
+		return isset($this->layers[$id]) ? $this->layers[$id] : null;
 	}
 
 	public function option($key, $value = null) {

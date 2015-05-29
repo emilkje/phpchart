@@ -37,7 +37,7 @@ class SpiderChart extends Chart {
 					'desc' => $item['desc']);
 			}, $layer->items());
 
-		}, $this->layers());
+		}, array_values($this->layers()));
 
 		$str = '';
 		$str .= '<script>';

@@ -40,6 +40,11 @@ PHPChart is a php helper for generating charts with d3.js
       ->option('translate-y', '30')
       ->draw();
 
+
+    // Set and get named layers
+    $hello = $chart->createLayer("hello");
+    $world = $chart->createLayer("world");
+
     ?>
 
 ###SpeedometerChart
