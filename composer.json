@@ -3,10 +3,10 @@
     "description": "A PHP / d3.js chart helper",
     "license": "MIT",
     "authors": [
-    {
-        "name": "Emil Kjelsrud",
-        "email": "emil@innit.no"
-    }
+        {
+            "name": "Emil Kjelsrud",
+            "email": "emil@innit.no"
+        }
     ],
     "minimum-stability": "stable",
     "require": {
@@ -16,9 +16,14 @@
         "phpspec/phpspec": "2.*"
     },
     "autoload": {
-      "psr-4": { "Innit\\Chart\\": "src/Chart" }
+        "psr-4": {
+            "Innit\\Chart\\": "src/Chart"
+        }
     },
     "autoload-dev": {
-      "psr-4": { "Innit\\Chart\\Tests\\": "spec/" }
-    }
+        "psr-4": {
+            "Innit\\Chart\\Tests\\": "spec/"
+        }
+    },
+    "stash": "ssh://git@stash.innit.no:7999/util/charthelper.git"
 }
